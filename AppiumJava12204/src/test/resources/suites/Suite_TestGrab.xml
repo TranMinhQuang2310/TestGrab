@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite Regression Test" verbose="1">
+
+    <test name="Platform Android Test 1 - Taurus App">
+        <!--        Tecno pova 6 Neo-->
+        <parameter name="platformName" value="Android"/>
+        <parameter name="automationName" value="UiAutomator2"/>
+        <!-- cột deviceName => value phải truyền là key được set trong file device.json-->
+        <parameter name="deviceName" value="tecnolt6"/>
+        <parameter name="udid" value="R58M368JJ4V"/>
+        <parameter name="platformVersion" value="11"/>
+        <parameter name="host" value="127.0.0.1"/>
+        <parameter name="port" value="8000"/>
+        <parameter name="systemPort" value="8201"/>
+        <classes>
+            <class name="com.quangtester.TestGrab.testcases.SignInTest">
+                <methods>
+                    <include name="signInSuccess"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
