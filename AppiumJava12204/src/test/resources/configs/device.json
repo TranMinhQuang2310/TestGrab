@@ -4,12 +4,12 @@
       "devices": {
         "tecnolt6": {
           "platformName": "Android",
-          "platformVersion": "11",
+          "platformVersion": "14",
           "automationName": "UiAutomator2",
-          "deviceName": "a30",
+          "deviceName": "TECNO-LI6",
           "appPackage": "com.grabtaxi.passenger",
           "appActivity": "com.grab.pax.newface.common.alias.DefaultLauncherAlias",
-          "noReset": true,
+          "noReset": false,
           "fullReset": false,
           "autoGrantPermissions": true
         }

@@ -79,10 +79,10 @@ public class MobileUI_Using_LogUtils_AllureReport {
         */
         sleep(STEP_ACTION_TIMEOUT);
         Map<String, Object> scrollParams = new HashMap<>();
-        scrollParams.put("left", 547); //vị trí mép trái vùng cuộn cách mép trái màn hình
-        scrollParams.put("top", 1072); //xác định mép trên của vùng cuộn
-        scrollParams.put("width", 16); //chiều ngang của vùng kéo
-        scrollParams.put("height", 657); //chiều dài của vùng kéo
+        scrollParams.put("left", 590); //vị trí mép trái vùng cuộn cách mép trái màn hình
+        scrollParams.put("top", 1445); //xác định mép trên của vùng cuộn
+        scrollParams.put("width", 14); //chiều ngang của vùng kéo
+        scrollParams.put("height", 533); //chiều dài của vùng kéo
         scrollParams.put("direction", "down"); //Scroll theo chiều từ trên xuống dưới (up, down, left, right)
         scrollParams.put("percent", 1); //Scroll 100% của vùng kéo được chỉ định (width, height)
 

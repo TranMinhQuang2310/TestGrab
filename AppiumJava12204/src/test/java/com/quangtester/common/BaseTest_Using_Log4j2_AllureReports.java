@@ -1,6 +1,6 @@
 package com.quangtester.common;
 
-import com.quangtester.Listeners.Bai27_TestListener_Using_LogUtils_AllureReports;
+import com.quangtester.Listeners.TestListener_Using_LogUtils_AllureReports;
 import com.quangtester.constants.ConfigData;
 import com.quangtester.drivers.DriverManager;
 import com.quangtester.helpers.SystemHelpers;
@@ -24,7 +24,7 @@ import java.time.Duration;
 import java.util.Objects;
 
 //Đặt @Listeners trên đầu
-@Listeners(Bai27_TestListener_Using_LogUtils_AllureReports.class)
+@Listeners(TestListener_Using_LogUtils_AllureReports.class)
 public class BaseTest_Using_Log4j2_AllureReports {
     private AppiumDriverLocalService service;
     private String HOST = "127.0.0.1";

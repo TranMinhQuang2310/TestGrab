@@ -27,7 +27,7 @@ public class BasePage {
     public WebElement clickButtonSignIn;
 
     //Click icon "X" tắt popup Đăng nhập = cách khác
-    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Thoát\"]")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Hủy\"]")
     @iOSXCUITFindBy(accessibility = "clickIconCancelSignInWithOther")
     public WebElement clickIconCancelSignInWithOther;
 
@@ -65,15 +65,16 @@ public class BasePage {
     @iOSXCUITFindBy(accessibility = "clickButtonContinue")
     private WebElement clickButtonContinue;
 
+    //Click button Cho phép gửi thông báo
+//    com.android.permissioncontroller:id/permission_allow_foreground_only_button
+    @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_button")
+    @iOSXCUITFindBy(accessibility = "clickButtonAcceptNotify")
+    private WebElement clickButtonAcceptNotify;
+
     //Click button Bỏ qua
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Bỏ qua\"]")
     @iOSXCUITFindBy(accessibility = "clickButtonSkip")
     private WebElement clickButtonSkip;
-
-    //Click button Cho phép gửi thông báo
-    @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_button")
-    @iOSXCUITFindBy(accessibility = "clickButtonAcceptNotify")
-    private WebElement clickButtonAcceptNotify;
 
     //----------------------
 
@@ -84,8 +85,34 @@ public class BasePage {
 
     //Click Nút "Đi chợ"
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Đi chợ\"]")
-    @iOSXCUITFindBy(accessibility = "market")
-    public WebElement market;
+    @iOSXCUITFindBy(accessibility = "clickMarket")
+    public WebElement clickMarket;
+
+    //Bia sữa nước ngọt
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Bia Sữa Nước Ngọt\"]")
+    @iOSXCUITFindBy(accessibility = "clickBeerMilk")
+    public WebElement clickBeerMilk;
+
+    //Item đầu tiên
+    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.grabtaxi.passenger:id/recycler_view\"]/androidx.compose.ui.platform.ComposeView[1]")
+    @iOSXCUITFindBy(accessibility = "clickItemFirst")
+    public WebElement clickItemFirst;
+
+    //Click Giao ngay
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"com.grabtaxi.passenger:id/gm_alert_dialog_negative_btn\"]")
+    @iOSXCUITFindBy(accessibility = "clickDeliveredImmediately")
+    public WebElement clickDeliveredImmediately;
+
+    //Click icon ...
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.grabtaxi.passenger:id/btn_omit\"]")
+    @iOSXCUITFindBy(accessibility = "clickIconExpand")
+    public WebElement clickIconExpand;
+
+    //Click detail store
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.grabtaxi.passenger:id/group_text\" and @text=\"Chi tiết cửa hàng\"]")
+    @iOSXCUITFindBy(accessibility = "clickDetailStore")
+    public WebElement clickDetailStore;
+
 
 
     //Các hàm xử lý chung cho nhiều trang đều có
@@ -133,7 +160,29 @@ public class BasePage {
 
 
     public void clickMarket() {
-        market.click();
+        clickMarket.click();
     }
+
+    public void clickBeerMilk() {
+        clickBeerMilk.click();
+    }
+
+    public void clickItemFirst() {
+        clickItemFirst.click();
+    }
+
+    public void clickDeliveredImmediately() {
+        clickDeliveredImmediately.click();
+    }
+
+    public void clickIconExpand() {
+        clickIconExpand.click();
+    }
+
+    public void clickDetailStore() {
+        clickDetailStore.click();
+    }
+
+
 
 }

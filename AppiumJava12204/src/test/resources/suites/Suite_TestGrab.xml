@@ -8,8 +8,8 @@
         <parameter name="automationName" value="UiAutomator2"/>
         <!-- cột deviceName => value phải truyền là key được set trong file device.json-->
         <parameter name="deviceName" value="tecnolt6"/>
-        <parameter name="udid" value="R58M368JJ4V"/>
-        <parameter name="platformVersion" value="11"/>
+        <parameter name="udid" value="1156625466001475"/>
+        <parameter name="platformVersion" value="14"/>
         <parameter name="host" value="127.0.0.1"/>
         <parameter name="port" value="8000"/>
         <parameter name="systemPort" value="8201"/>
