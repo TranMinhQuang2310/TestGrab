@@ -3,6 +3,9 @@ package com.quangtester.keywords;
 import com.quangtester.constants.ConfigData;
 import com.quangtester.drivers.DriverManager;
 import com.quangtester.utils.LogUtils;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -79,11 +82,11 @@ public class MobileUI_Using_LogUtils_AllureReport {
         */
         sleep(STEP_ACTION_TIMEOUT);
         Map<String, Object> scrollParams = new HashMap<>();
-        scrollParams.put("left", 590); //vị trí mép trái vùng cuộn cách mép trái màn hình
-        scrollParams.put("top", 1445); //xác định mép trên của vùng cuộn
-        scrollParams.put("width", 14); //chiều ngang của vùng kéo
-        scrollParams.put("height", 533); //chiều dài của vùng kéo
-        scrollParams.put("direction", "down"); //Scroll theo chiều từ trên xuống dưới (up, down, left, right)
+        scrollParams.put("left", 552); //vị trí mép trái vùng cuộn cách mép trái màn hình
+        scrollParams.put("top", 1568); //xác định mép trên của vùng cuộn
+        scrollParams.put("width", 10); //chiều ngang của vùng kéo
+        scrollParams.put("height", 807); //chiều dài của vùng kéo
+        scrollParams.put("direction", "up"); //Scroll theo chiều từ dưới lên trên (up, down, left, right)
         scrollParams.put("percent", 1); //Scroll 100% của vùng kéo được chỉ định (width, height)
 
         LogUtils.info("[MobileUI] Executing scrollGesture command with params: " + scrollParams);

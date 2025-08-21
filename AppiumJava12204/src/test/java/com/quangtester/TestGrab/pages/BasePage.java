@@ -1,7 +1,10 @@
 package com.quangtester.TestGrab.pages;
 
+import com.quangtester.drivers.AndroidDriverManager;
 import com.quangtester.drivers.DriverManager;
 import com.quangtester.keywords.MobileUI_Using_LogUtils_AllureReport;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
@@ -113,6 +116,35 @@ public class BasePage {
     @iOSXCUITFindBy(accessibility = "clickDetailStore")
     public WebElement clickDetailStore;
 
+    //Click icon Back To HomePage shop
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id=\"com.grabtaxi.passenger:id/gds_appbar_navigation_button\"]")
+    @iOSXCUITFindBy(accessibility = "clickIconBackToHomePageShop")
+    public WebElement clickIconBackToHomePageShop;
+
+    //Click search bar
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.grabtaxi.passenger:id/mart_search_hint\"]")
+    @iOSXCUITFindBy(accessibility = "clickSearchBar")
+    public WebElement clickSearchBar;
+
+    //Click search bar before type text
+    @AndroidFindBy(id = "com.grabtaxi.passenger:id/et_search")
+    @iOSXCUITFindBy(accessibility = "clickSearchBarBeforeTypeText")
+    public WebElement clickSearchBarBeforeTypeText;
+
+    //Field Data in Bar searcg
+    public void fieldDataInBarSearch(String data) {
+        MobileUI_Using_LogUtils_AllureReport.clickElement_UseWebElement_NoSetTimeout(clickSearchBarBeforeTypeText);
+        MobileUI_Using_LogUtils_AllureReport.setText_UseWebElement_NoSetTimeout(clickSearchBarBeforeTypeText,data);
+
+        // Nhấn Enter ngay sau khi điền
+        AndroidDriverManager.getDriver().pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    //Click icon Back To List shop
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.grabtaxi.passenger:id/back\"]")
+    @iOSXCUITFindBy(accessibility = "clickIconBackToListShop")
+    public WebElement clickIconBackToListShop;
+
 
 
     //Các hàm xử lý chung cho nhiều trang đều có
@@ -181,6 +213,18 @@ public class BasePage {
 
     public void clickDetailStore() {
         clickDetailStore.click();
+    }
+
+    public void clickIconBackToHomePageShop() {
+        clickIconBackToHomePageShop.click();
+    }
+
+    public void clickSearchBar() {
+        clickSearchBar.click();
+    }
+
+    public void clickSearchBarBeforeTypeText() {
+        clickSearchBarBeforeTypeText.click();
     }
 
 

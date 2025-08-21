@@ -10,9 +10,9 @@
         <parameter name="deviceName" value="tecnolt6"/>
         <parameter name="udid" value="1156625466001475"/>
         <parameter name="platformVersion" value="14"/>
-        <parameter name="host" value="127.0.0.1"/>
-        <parameter name="port" value="8000"/>
-        <parameter name="systemPort" value="8201"/>
+        <parameter name="host" value="127.0.0.2"/>
+        <parameter name="port" value="9000"/>
+        <parameter name="systemPort" value="9201"/>
         <classes>
             <class name="com.quangtester.TestGrab.testcases.SignInTest">
                 <methods>
