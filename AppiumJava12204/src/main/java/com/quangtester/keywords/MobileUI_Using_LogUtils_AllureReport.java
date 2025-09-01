@@ -2,6 +2,8 @@ package com.quangtester.keywords;
 
 import com.quangtester.constants.ConfigData;
 import com.quangtester.drivers.DriverManager;
+import com.quangtester.helpers.CaptureHelpers;
+import com.quangtester.reports.AllureManager;
 import com.quangtester.utils.LogUtils;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -48,21 +50,33 @@ public class MobileUI_Using_LogUtils_AllureReport {
     public static void scroll(int startX , int startY , int endX , int endY , int durationMillis) {
         sleep(STEP_ACTION_TIMEOUT);
         LogUtils.info("[MobileUI] Executing swipe from (" + startX + "," + startY + ") to (" + endX + "," + endY + ") with duration " + durationMillis + "ms.");
-        //PointerInput: Đại diện cho một thiết bị đầu vào, trong trường hợp này là ngón tay (PointerInput.Kind.TOUCH)
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        //Sequence: Tập hợp các hành động được thực hiện bởi một PointerInput (1 ngón tay)
-        Sequence swipe = new Sequence(finger, 1);
-        //createPointerMove(): Di chuyển con trỏ đến vị trí của phần tử
-        //PointerInput.Origin.viewport() xác định hệ tọa độ dựa trên viewport (khung nhìn) của ứng dụng.
-        swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
-        //createPointerDown(): Mô phỏng việc chạm vào màn hình.
-        swipe.addAction(finger.createPointerDown(0));
-        //durationMillis : tốc độ vuốt
-        swipe.addAction(finger.createPointerMove(Duration.ofMillis(durationMillis), PointerInput.Origin.viewport(), endX, endY));
-        //createPointerUp(): Mô phỏng việc nhấc ngón tay khỏi màn hình
-        swipe.addAction(finger.createPointerUp(0));
-        //DriverManager.perform(): Thực hiện chuỗi hành động được định nghĩa trong Sequence.
-        DriverManager.getDriver().perform(Collections.singletonList(swipe));
+        try{
+            //PointerInput: Đại diện cho một thiết bị đầu vào, trong trường hợp này là ngón tay (PointerInput.Kind.TOUCH)
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            //Sequence: Tập hợp các hành động được thực hiện bởi một PointerInput (1 ngón tay)
+            Sequence swipe = new Sequence(finger, 1);
+            //createPointerMove(): Di chuyển con trỏ đến vị trí của phần tử
+            //PointerInput.Origin.viewport() xác định hệ tọa độ dựa trên viewport (khung nhìn) của ứng dụng.
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+            //createPointerDown(): Mô phỏng việc chạm vào màn hình.
+            swipe.addAction(finger.createPointerDown(0));
+            //durationMillis : tốc độ vuốt
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(durationMillis), PointerInput.Origin.viewport(), endX, endY));
+            //createPointerUp(): Mô phỏng việc nhấc ngón tay khỏi màn hình
+            swipe.addAction(finger.createPointerUp(0));
+            //DriverManager.perform(): Thực hiện chuỗi hành động được định nghĩa trong Sequence.
+            DriverManager.getDriver().perform(Collections.singletonList(swipe));
+
+            // 📸 Chụp hình sau khi scroll
+            String screenshotName = "scroll_" + startX + "_" + startY + "_to_" + endX + "_" + endY;
+            CaptureHelpers.captureScreenshot(screenshotName);
+
+            //Attach screenshot vào Allure report
+            AllureManager.saveScreenshotPNG();
+            LogUtils.info("📸 Screenshot captured after scroll step.");
+        } catch (Exception e) {
+            LogUtils.error("❌ Scroll action failed: " + e.getMessage());
+        }
     }
 
     //Scroll từ dưới lên trên (Dùng Getsure) => Chỉ aáp dụng cho Native Apps

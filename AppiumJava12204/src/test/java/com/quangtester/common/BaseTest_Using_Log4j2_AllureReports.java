@@ -2,10 +2,13 @@ package com.quangtester.common;
 
 import com.quangtester.Listeners.TestListener_Using_LogUtils_AllureReports;
 import com.quangtester.constants.ConfigData;
+import com.quangtester.drivers.AndroidDriverManager;
 import com.quangtester.drivers.DriverManager;
+import com.quangtester.helpers.CaptureHelpers;
 import com.quangtester.helpers.SystemHelpers;
 import com.quangtester.keywords.MobileUI_Using_LogUtils_AllureReport;
 import com.quangtester.reports.AllureManager;
+import com.quangtester.utils.DateUtils;
 import com.quangtester.utils.LogUtils;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
@@ -157,6 +160,7 @@ public class BaseTest_Using_Log4j2_AllureReports {
                 }
 
                 driver = new AndroidDriver(new URL("http://" + host + ":" + port), options);
+
                 LogUtils.info("Khởi tạo AndroidDriver cho thread: " + Thread.currentThread().getId() + " trên thiết bị: " + deviceName);
 
 
@@ -190,6 +194,10 @@ public class BaseTest_Using_Log4j2_AllureReports {
             // Lưu driver vào ThreadLocal
             DriverManager.setDriver(driver);
 
+            // Screenshot khởi tạo app thành công
+            AllureManager.saveScreenshotPNG();
+            LogUtils.info("📸 Screenshot captured at driver setup.");
+
             //Nơi set up Record Video
             // Tạo tên file video duy nhất dựa trên device và thread
 //            SystemHelpers.createFolder(SystemHelpers.getCurrentDir() + "exports/videos");
@@ -201,6 +209,23 @@ public class BaseTest_Using_Log4j2_AllureReports {
 //
 //            //Bắt đầu Record Video
 //            CaptureHelpers.startRecording();
+
+            // ✅ Nơi set up Record Video
+//            if (ConfigData.RECORD_VIDEO.equalsIgnoreCase("true")) {
+//                // Tạo folder lưu video
+//                SystemHelpers.createFolder(SystemHelpers.getCurrentDir() + "exports/videos");
+//
+//                // Tạo tên file duy nhất
+//                videoFileName = SystemHelpers.getCurrentDir() + "exports/videos/recording_"
+//                        + deviceName + "_"
+//                        + Thread.currentThread().getId() + "_"
+//                        + SystemHelpers.makeSlug(DateUtils.getCurrentDateTime())
+//                        + ".mp4";
+//
+//                // ✅ Bắt đầu Record Video ngay sau khi driver khởi tạo thành công
+//                CaptureHelpers.startRecording();
+//                LogUtils.info("🎥 Video recording started: " + videoFileName);
+//            }
 
         } catch (Exception e) {
             System.err.println("❌Lỗi nghiêm trọng khi khởi tạo driver cho thread " + Thread.currentThread().getId() + " trên device " + deviceName + ": " + e.getMessage());
@@ -216,11 +241,14 @@ public class BaseTest_Using_Log4j2_AllureReports {
     @Step("Close app")
     public void tearDownDriver() {
         if (DriverManager.getDriver() != null) {
+            // ✅ Stop Recording Video trước khi quit driver
+//            if (ConfigData.RECORD_VIDEO.equalsIgnoreCase("true")) {
+//                MobileUI_Using_LogUtils_AllureReport.sleep(2); // delay nhẹ tránh mất frame
+//                CaptureHelpers.stopRecording(videoFileName);
+//                LogUtils.info("🎥 Video recording stopped: " + videoFileName);
+//            }
 
-            //Stop Recording Video
-//            MobileUI.sleep(2);
-//            CaptureHelpers.stopRecording(videoFileName);
-
+            AllureManager.saveScreenshotPNG(); // Screenshot lúc quit
             DriverManager.quitDriver();
             LogUtils.info("##### Driver quit and removed.");
         }

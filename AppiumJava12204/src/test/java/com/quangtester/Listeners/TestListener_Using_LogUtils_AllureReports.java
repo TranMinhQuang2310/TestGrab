@@ -77,6 +77,7 @@ public class TestListener_Using_LogUtils_AllureReports implements ITestListener 
             MobileUI_Using_LogUtils_AllureReport.sleep(5);
             //Xuât tên ảnh màn hình đã được chụp khi Stop Record Video
             CaptureHelpers.stopRecording(videoFileName);
+            LogUtils.info("🎥 Video đã được lưu cho test case: " + result.getName());
         }
 
         //Add screenshot to Allure report => Đính kèm ảnh chụp màn hình khi testcase chạy failed
@@ -115,6 +116,7 @@ public class TestListener_Using_LogUtils_AllureReports implements ITestListener 
             MobileUI_Using_LogUtils_AllureReport.sleep(5);
             //Xuât tên ảnh màn hình đã được chụp khi Stop Record Video
             CaptureHelpers.stopRecording(videoFileName);
+            LogUtils.info("🎥 Video đã được lưu cho test case thất bại: " + result.getName());
         }
 
         //Add screenshot to Allure report => Đính kèm ảnh chụp màn hình khi testcase chạy failed
@@ -148,6 +150,7 @@ public class TestListener_Using_LogUtils_AllureReports implements ITestListener 
             MobileUI_Using_LogUtils_AllureReport.sleep(5);
             //Xuât tên ảnh màn hình đã được chụp khi Stop Record Video
             CaptureHelpers.stopRecording(videoFileName);
+            LogUtils.info("🎥 Video đã được lưu cho test case bị skip: " + result.getName());
         }
     }
 }

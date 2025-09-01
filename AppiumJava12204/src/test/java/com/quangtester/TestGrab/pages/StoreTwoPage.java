@@ -1,38 +1,41 @@
 package com.quangtester.TestGrab.pages;
 
-import com.quangtester.drivers.AndroidDriverManager;
 import com.quangtester.drivers.DriverManager;
+import com.quangtester.helpers.CaptureHelpers;
 import com.quangtester.keywords.MobileUI;
 import com.quangtester.keywords.MobileUI_Using_LogUtils_AllureReport;
 import com.quangtester.reports.AllureManager;
-import io.appium.java_client.AppiumBy;
+import com.quangtester.utils.LogUtils;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
-
-public class SignInPage extends BasePage {
+public class StoreTwoPage extends BasePage {
     // Constructor (Cấu hình mặc định của appium)
-    public SignInPage() {
+    public StoreTwoPage() {
         PageFactory.initElements(new AppiumFieldDecorator(DriverManager.getDriver()),this);
     }
 
-    //Click Store đầu tiên
-    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.grabtaxi.passenger:id/recycler_view\"]/androidx.compose.ui.platform.ComposeView[1]")
-    @iOSXCUITFindBy(accessibility = "clickStoreFirst")
-    public WebElement clickStoreFirst;
+    //Click Store thứ hai
+    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.grabtaxi.passenger:id/recycler_view\"]/androidx.compose.ui.platform.ComposeView[2]")
+    @iOSXCUITFindBy(accessibility = "clickStoreTwo")
+    public WebElement clickStoreTwo;
 
-    //Click Giao ngay
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"com.grabtaxi.passenger:id/gm_alert_dialog_negative_btn\"]")
-    @iOSXCUITFindBy(accessibility = "clickDeliveredImmediately")
-    public WebElement clickDeliveredImmediately;
+    //Click chi nhánh đầu tiên
+    @AndroidFindBy(xpath = "(//android.widget.FrameLayout[@resource-id=\"com.grabtaxi.passenger:id/merchant_desc\"])[1]")
+    @iOSXCUITFindBy(accessibility = "clickFirstBranchStoreTwo")
+    public WebElement clickFirstBranchStoreTwo;
+
+    //Click button OK trên popup "Lưu món vào quán yêu thích"
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"com.grabtaxi.passenger:id/gm_alert_dialog_positive_btn\"]")
+    @iOSXCUITFindBy(accessibility = "clickButtonOKPopupFavoriteStore")
+    public WebElement clickButtonOKPopupFavoriteStore;
 
     //Click icon ...
     @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.grabtaxi.passenger:id/btn_omit\"]")
@@ -73,7 +76,6 @@ public class SignInPage extends BasePage {
         }
 
     }
-
     //Click icon Back To HomePage Category Shop
     @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.grabtaxi.passenger:id/iv_close\"]")
     @iOSXCUITFindBy(accessibility = "clickIconBackToHomePageCategoryShop")
@@ -84,13 +86,20 @@ public class SignInPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "clickIconBackToListStore")
     public WebElement clickIconBackToListStore;
 
+
     //------------------------------------------------------------------------------------------------
-    public void clickStoreFirst() {
-        clickStoreFirst.click();
+
+    //Các hàm xử lý chung cho nhiều trang đều có
+    public void clickStoreTwo() {
+        clickStoreTwo.click();
     }
 
-    public void clickDeliveredImmediately() {
-        clickDeliveredImmediately.click();
+    public void clickFirstBranchStoreTwo() {
+        clickFirstBranchStoreTwo.click();
+    }
+
+    public void clickButtonOKPopupFavoriteStore() {
+        clickButtonOKPopupFavoriteStore.click();
     }
 
     public void clickIconExpand() {
@@ -121,124 +130,38 @@ public class SignInPage extends BasePage {
         clickIconBackToListStore.click();
     }
 
+
     //------------------------------------------------------------------------------------------------
-
-    public StoreTwoPage signIn() {
-        //Click Nút permission
+    public void handleStoreTwo(){
+        //Click Store thứ hai
         MobileUI.sleep(4);
-        clickPermission();
+        clickStoreTwo();
 
-        //Click button "Đăng nhập"
+        //Click chi nhánh đầu tiên
         MobileUI.sleep(4);
-        clickButtonSignIn();
+        clickFirstBranchStoreTwo();
 
-        //Click icon "X" tắt popup Đăng nhập = cách khác
+        //Click button OK trên popup "Lưu món vào quán yêu thích"
         MobileUI.sleep(4);
-        clickIconCancelSignInWithOther();
-
-
-        //clickIconBack();
-
-        //Click tiếp tục với số điện thoại
-        MobileUI.sleep(3);
-        clickButtonContinueWithPhoneNumber();
-
-        //Click icon "X" tắt popup chọn 1 số điện thoại
-        MobileUI.sleep(5);
-        clickIconCancelChoosePhoneNumberOther();
-
-        //Click vào ô nhập số điện thoại
-        //Nhập số điện thoại
-        MobileUI.sleep(5);
-        signIn("0398982068");
-
-        //Click button Tiếp tục
-        MobileUI.sleep(7);
-        clickButtonContinue();
-
-        //Click button Cho phép gửi thông báo
-        MobileUI.sleep(7);
-        clickButtonAcceptNotify();
-
-        //Click button Bỏ qua
-        //MobileUI.sleep(5);
-        //clickButtonSkip();
-
-        //----------------------
-
-        //Click Nút "Tất cả" trên thanh menu
-        MobileUI.sleep(4);
-        clickButtonAll();
-
-        //Click Nút "Đi chợ"
-        MobileUI.sleep(6);
-        clickMarket();
-
-        //Click vào thanh search giao tới địa chỉ
-        MobileUI.sleep(4);
-        clickBarSearchDeliveryAddress();
-
-        //Click vào thanh search địa chỉ giao tới
-        MobileUI.sleep(4);
-        clickBarSearchAddressDeliveryTo();
-
-        //Nhập địa chỉ giao tới
-        MobileUI.sleep(4);
-        TypeAddressDeliveryTo("Toà nhà GB");
-
-        //Chọn item địa chỉ đầu tiên trong danh sách gợi ý
-        MobileUI.sleep(4);
-        clickItemFirstAddress();
-
-        //Scroll sang trái
-        MobileUI.sleep(4);
-        MobileUI_Using_LogUtils_AllureReport.scrollLeft();
-
-        //Click Nút "Bia sữa nước ngọt"
-        MobileUI.sleep(4);
-        clickBeerMilk();
-
-        //Click Store đầu tiên
-        MobileUI.sleep(4);
-        clickStoreFirst();
-
-//        MobileUI.sleep(3);
-//        MobileUI_Using_LogUtils_AllureReport.scrollGestureCommand();
-
-        //Click Giao ngay
-        MobileUI.sleep(6);
-        clickDeliveredImmediately();
+        clickButtonOKPopupFavoriteStore();
 
         //Click icon ...
         MobileUI.sleep(4);
         clickIconExpand();
 
-        //Click Detail Store
+        //Click detail store
         MobileUI.sleep(4);
         clickDetailStore();
 
-//        MobileUI.sleep(3);
-//        List<WebElement> descriptions = AndroidDriverManager.getDriver().findElements(AppiumBy.xpath("//androidx.compose.ui.platform.ComposeView[@resource-id=\"com.grabtaxi.passenger:id/compose_view_merchant_info\"]/android.view.View/android.widget.TextView"));
-//        System.out.println("Detail Information Shop: ");
-//
-//        for(WebElement description : descriptions) {
-//            try {
-//                String descriptionText = description.getText();
-//                System.out.println(descriptionText);
-//            } catch (NoSuchElementException e) {
-//                System.out.println("*** Không tìm thấy phần mô tả cho thông báo này (hoặc không có mô tả).");
-//            }
-//        }
-
         //Lăn xuống xem thông tin cửa hàng và chụp hình
         MobileUI.sleep(4);
-        MobileUI_Using_LogUtils_AllureReport.scroll(534,2361,552,1686,1000);
+        MobileUI_Using_LogUtils_AllureReport.scroll(479,2319,498,1704,1000);
 
         //Click icon Back To HomePage shop
         MobileUI.sleep(4);
         clickIconBackToHomePageShop();
 
-        //Tìm kiếm sản phẩm
+        //Click search bar
         MobileUI.sleep(4);
         clickSearchBar();
 
@@ -250,31 +173,57 @@ public class SignInPage extends BasePage {
         MobileUI.sleep(4);
         fieldDataInBarSearch("Coca");
 
-        //Lăn xuống xem thông tin sản phẩm
-        MobileUI.sleep(3);
-        MobileUI_Using_LogUtils_AllureReport.scroll(529,2257,543,1705,1000);
-        MobileUI.sleep(3);
-
-        MobileUI.sleep(3);
-        MobileUI_Using_LogUtils_AllureReport.scroll(543,2186,543,1365,1000);
-        MobileUI.sleep(3);
-
-        MobileUI.sleep(3);
-        MobileUI_Using_LogUtils_AllureReport.scroll(562,2205,562,1539,1000);
-        MobileUI.sleep(3);
-
-        MobileUI.sleep(3);
-        MobileUI_Using_LogUtils_AllureReport.scroll(548,2144,557,1587,1000);
-        MobileUI.sleep(3);
+        //Xử lý kết quả search + scroll
+        MobileUI.sleep(4);
+        searchAndScroll(
+                By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.grabtaxi.passenger:id/recycler_view\"]/androidx.compose.ui.platform.ComposeView[1]"),
+                By.xpath("//android.widget.TextView[@resource-id=\"com.grabtaxi.passenger:id/empty_view_title\"]")
+        );
 
         //Click icon Back To HomePage Category Shop
+        MobileUI.sleep(5);
         clickIconBackToHomePageCategoryShop();
 
-        MobileUI.sleep(3);
         //Click icon Back To List Store
+        MobileUI.sleep(4);
         clickIconBackToListStore();
 
-        return new StoreTwoPage();
-
     }
+
+    /**
+     * Hàm xử lý kết quả search + scroll
+     */
+    public void searchAndScroll(By resultLocator, By noResultLocator) {
+        try {
+            if (MobileUI_Using_LogUtils_AllureReport.isElementEnabled_UseByLocator(resultLocator)) {
+                LogUtils.info("✅ Tìm thấy kết quả search, thực hiện scroll...");
+                MobileUI_Using_LogUtils_AllureReport.scroll(529, 2257, 543, 1705, 1000);
+            }
+            else if (MobileUI_Using_LogUtils_AllureReport.isElementEnabled_UseByLocator(noResultLocator)) {
+                LogUtils.warn("⚠️ Không có kết quả phù hợp. Chụp screenshot để báo cáo.");
+
+                //Chụp màn hình lưu vào folder Screenshot
+                String screenshotName = "Search_No_Displayed_Item_" + System.currentTimeMillis();
+                CaptureHelpers.captureScreenshot(screenshotName);
+
+                //Chụp màn hình lưu vào Allure report
+                AllureManager.saveScreenshotPNG();
+                LogUtils.info("📸 Screenshot captured after not displayed Item.");
+
+            }
+            else {
+                LogUtils.warn("❓ Không xác định được trạng thái kết quả search.");
+            }
+        } catch (Exception e) {
+            LogUtils.error("❌ Lỗi khi xử lý searchAndScroll: " + e.getMessage());
+            //Chụp màn hình lưu vào folder Screenshot
+            String screenshotName = "Error_Search_And_Scroll_" + System.currentTimeMillis();
+            CaptureHelpers.captureScreenshot(screenshotName);
+
+            //Chụp màn hình lưu vào Allure report
+            AllureManager.saveScreenshotPNG();
+        }
+    }
+
+
 }

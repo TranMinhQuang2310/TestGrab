@@ -14,9 +14,9 @@
         <parameter name="port" value="9000"/>
         <parameter name="systemPort" value="9201"/>
         <classes>
-            <class name="com.quangtester.TestGrab.testcases.SignInTest">
+            <class name="com.quangtester.TestGrab.testcases.StoreTwoTest">
                 <methods>
-                    <include name="signInSuccess"/>
+                    <include name="testStoreTwo"/>
                 </methods>
             </class>
         </classes>

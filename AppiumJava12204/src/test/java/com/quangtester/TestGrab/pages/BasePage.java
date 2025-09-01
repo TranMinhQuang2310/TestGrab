@@ -2,7 +2,9 @@ package com.quangtester.TestGrab.pages;
 
 import com.quangtester.drivers.AndroidDriverManager;
 import com.quangtester.drivers.DriverManager;
+import com.quangtester.keywords.MobileUI;
 import com.quangtester.keywords.MobileUI_Using_LogUtils_AllureReport;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -81,7 +83,7 @@ public class BasePage {
 
     //----------------------
 
-    //Click Nút "Tất cả"
+    //Click Nút "Tất cả" trên thanh menu
     @AndroidFindBy(id = "com.grabtaxi.passenger:id/img_more_dots")
     @iOSXCUITFindBy(accessibility = "clickButtonAll")
     public WebElement clickButtonAll;
@@ -91,61 +93,40 @@ public class BasePage {
     @iOSXCUITFindBy(accessibility = "clickMarket")
     public WebElement clickMarket;
 
+    //Click vào thanh search giao tới địa chỉ
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.grabtaxi.passenger:id/mart_delivery_to_address\"]")
+    @iOSXCUITFindBy(accessibility = "clickBarSearchDeliveryAddress")
+    public WebElement clickBarSearchDeliveryAddress;
+
+
+    //Click vào thanh search địa chỉ giao tới
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"com.grabtaxi.passenger:id/poi_first_search\"]")
+    @iOSXCUITFindBy(accessibility = "clickBarSearchAddressDeliveryTo")
+    public WebElement clickBarSearchAddressDeliveryTo;
+
+    //Nhập địa chỉ giao tới
+    public void TypeAddressDeliveryTo(String address) {
+        //Click vào thanh search địa chỉ giao tới
+        MobileUI_Using_LogUtils_AllureReport.clickElement_UseWebElement_NoSetTimeout(clickBarSearchAddressDeliveryTo);
+        //Nhập địa chỉ giao tới
+        MobileUI_Using_LogUtils_AllureReport.setText_UseWebElement_NoSetTimeout(clickBarSearchAddressDeliveryTo,address);
+    }
+
+    //Chọn item địa chỉ đầu tiên trong danh sách gợi ý
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.grabtaxi.passenger:id/list_item_heading\" and @text=\"GB Building\"]")
+    @iOSXCUITFindBy(accessibility = "clickItemFirstAddress")
+    public WebElement clickItemFirstAddress;
+
+
     //Bia sữa nước ngọt
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Bia Sữa Nước Ngọt\"]")
     @iOSXCUITFindBy(accessibility = "clickBeerMilk")
     public WebElement clickBeerMilk;
 
-    //Item đầu tiên
-    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.grabtaxi.passenger:id/recycler_view\"]/androidx.compose.ui.platform.ComposeView[1]")
-    @iOSXCUITFindBy(accessibility = "clickItemFirst")
-    public WebElement clickItemFirst;
-
-    //Click Giao ngay
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"com.grabtaxi.passenger:id/gm_alert_dialog_negative_btn\"]")
-    @iOSXCUITFindBy(accessibility = "clickDeliveredImmediately")
-    public WebElement clickDeliveredImmediately;
-
-    //Click icon ...
-    @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.grabtaxi.passenger:id/btn_omit\"]")
-    @iOSXCUITFindBy(accessibility = "clickIconExpand")
-    public WebElement clickIconExpand;
-
-    //Click detail store
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.grabtaxi.passenger:id/group_text\" and @text=\"Chi tiết cửa hàng\"]")
-    @iOSXCUITFindBy(accessibility = "clickDetailStore")
-    public WebElement clickDetailStore;
-
-    //Click icon Back To HomePage shop
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id=\"com.grabtaxi.passenger:id/gds_appbar_navigation_button\"]")
-    @iOSXCUITFindBy(accessibility = "clickIconBackToHomePageShop")
-    public WebElement clickIconBackToHomePageShop;
-
-    //Click search bar
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.grabtaxi.passenger:id/mart_search_hint\"]")
-    @iOSXCUITFindBy(accessibility = "clickSearchBar")
-    public WebElement clickSearchBar;
-
-    //Click search bar before type text
-    @AndroidFindBy(id = "com.grabtaxi.passenger:id/et_search")
-    @iOSXCUITFindBy(accessibility = "clickSearchBarBeforeTypeText")
-    public WebElement clickSearchBarBeforeTypeText;
-
-    //Field Data in Bar searcg
-    public void fieldDataInBarSearch(String data) {
-        MobileUI_Using_LogUtils_AllureReport.clickElement_UseWebElement_NoSetTimeout(clickSearchBarBeforeTypeText);
-        MobileUI_Using_LogUtils_AllureReport.setText_UseWebElement_NoSetTimeout(clickSearchBarBeforeTypeText,data);
-
-        // Nhấn Enter ngay sau khi điền
-        AndroidDriverManager.getDriver().pressKey(new KeyEvent(AndroidKey.ENTER));
-    }
-
-    //Click icon Back To List shop
-    @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.grabtaxi.passenger:id/back\"]")
-    @iOSXCUITFindBy(accessibility = "clickIconBackToListShop")
-    public WebElement clickIconBackToListShop;
 
 
+
+    //------------------------------------------------------------------------------------------------
 
     //Các hàm xử lý chung cho nhiều trang đều có
     public void clickPermission() {
@@ -190,42 +171,26 @@ public class BasePage {
         clickButtonAll.click();
     }
 
-
     public void clickMarket() {
         clickMarket.click();
+    }
+
+    public void clickBarSearchDeliveryAddress() {
+        clickBarSearchDeliveryAddress.click();
+    }
+
+    public void clickBarSearchAddressDeliveryTo() {
+        clickBarSearchAddressDeliveryTo.click();
+    }
+
+    public void clickItemFirstAddress() {
+        clickItemFirstAddress.click();
     }
 
     public void clickBeerMilk() {
         clickBeerMilk.click();
     }
 
-    public void clickItemFirst() {
-        clickItemFirst.click();
-    }
-
-    public void clickDeliveredImmediately() {
-        clickDeliveredImmediately.click();
-    }
-
-    public void clickIconExpand() {
-        clickIconExpand.click();
-    }
-
-    public void clickDetailStore() {
-        clickDetailStore.click();
-    }
-
-    public void clickIconBackToHomePageShop() {
-        clickIconBackToHomePageShop.click();
-    }
-
-    public void clickSearchBar() {
-        clickSearchBar.click();
-    }
-
-    public void clickSearchBarBeforeTypeText() {
-        clickSearchBarBeforeTypeText.click();
-    }
 
 
 
