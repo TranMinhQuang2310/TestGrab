@@ -2,6 +2,7 @@ package com.quangtester.TestGrab.pages;
 
 import com.quangtester.drivers.AndroidDriverManager;
 import com.quangtester.drivers.DriverManager;
+import com.quangtester.helpers.CaptureHelpers;
 import com.quangtester.keywords.MobileUI;
 import com.quangtester.keywords.MobileUI_Using_LogUtils_AllureReport;
 import com.quangtester.reports.AllureManager;
@@ -86,54 +87,54 @@ public class SignInPage extends BasePage {
 
     //------------------------------------------------------------------------------------------------
     public void clickStoreFirst() {
-        clickStoreFirst.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickStoreFirst);
     }
 
     public void clickDeliveredImmediately() {
-        clickDeliveredImmediately.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickDeliveredImmediately);
     }
 
     public void clickIconExpand() {
-        clickIconExpand.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconExpand);
     }
 
     public void clickDetailStore() {
-        clickDetailStore.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickDetailStore);
     }
 
     public void clickIconBackToHomePageShop() {
-        clickIconBackToHomePageShop.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconBackToHomePageShop);
     }
 
     public void clickSearchBar() {
-        clickSearchBar.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickSearchBar);
     }
 
     public void clickSearchBarBeforeTypeText() {
-        clickSearchBarBeforeTypeText.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickSearchBarBeforeTypeText);
     }
 
     public void clickIconBackToHomePageCategoryShop() {
-        clickIconBackToHomePageCategoryShop.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconBackToHomePageCategoryShop);
     }
 
     public void clickIconBackToListStore() {
-        clickIconBackToListStore.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconBackToListStore);
     }
 
     //------------------------------------------------------------------------------------------------
 
     public StoreTwoPage signIn() {
         //Click Nút permission
-        MobileUI.sleep(4);
-        clickPermission();
+        //MobileUI.sleep(4);
+        //clickPermission();
 
         //Click button "Đăng nhập"
-        MobileUI.sleep(4);
+        MobileUI.sleep(6);
         clickButtonSignIn();
 
         //Click icon "X" tắt popup Đăng nhập = cách khác
-        MobileUI.sleep(4);
+        MobileUI.sleep(7);
         clickIconCancelSignInWithOther();
 
 
@@ -192,7 +193,7 @@ public class SignInPage extends BasePage {
 
         //Scroll sang trái
         MobileUI.sleep(4);
-        MobileUI_Using_LogUtils_AllureReport.scrollLeft();
+        MobileUI_Using_LogUtils_AllureReport.scrollLeftToaDo();
 
         //Click Nút "Bia sữa nước ngọt"
         MobileUI.sleep(4);
@@ -232,7 +233,7 @@ public class SignInPage extends BasePage {
 
         //Lăn xuống xem thông tin cửa hàng và chụp hình
         MobileUI.sleep(4);
-        MobileUI_Using_LogUtils_AllureReport.scroll(534,2361,552,1686,1000);
+        MobileUI_Using_LogUtils_AllureReport.scroll(512,2071,521,1388,1000);
 
         //Click icon Back To HomePage shop
         MobileUI.sleep(4);
@@ -250,21 +251,24 @@ public class SignInPage extends BasePage {
         MobileUI.sleep(4);
         fieldDataInBarSearch("Coca");
 
+        //Chụp màn hình khi mới vào
+        CaptureHelpers.captureScreenshot("Screenshot Coca First");
+
         //Lăn xuống xem thông tin sản phẩm
         MobileUI.sleep(3);
-        MobileUI_Using_LogUtils_AllureReport.scroll(529,2257,543,1705,1000);
+        MobileUI_Using_LogUtils_AllureReport.scroll(543,2012,548,1213,1000);
         MobileUI.sleep(3);
 
         MobileUI.sleep(3);
-        MobileUI_Using_LogUtils_AllureReport.scroll(543,2186,543,1365,1000);
+        MobileUI_Using_LogUtils_AllureReport.scroll(539,1868,543,1276,1000);
         MobileUI.sleep(3);
 
         MobileUI.sleep(3);
-        MobileUI_Using_LogUtils_AllureReport.scroll(562,2205,562,1539,1000);
+        MobileUI_Using_LogUtils_AllureReport.scroll(526,1954,530,1276,1000);
         MobileUI.sleep(3);
 
         MobileUI.sleep(3);
-        MobileUI_Using_LogUtils_AllureReport.scroll(548,2144,557,1587,1000);
+        MobileUI_Using_LogUtils_AllureReport.scroll(561,2160,570,1168,1000);
         MobileUI.sleep(3);
 
         //Click icon Back To HomePage Category Shop

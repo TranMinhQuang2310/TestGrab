@@ -91,43 +91,43 @@ public class StoreTwoPage extends BasePage {
 
     //Các hàm xử lý chung cho nhiều trang đều có
     public void clickStoreTwo() {
-        clickStoreTwo.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickStoreTwo);
     }
 
     public void clickFirstBranchStoreTwo() {
-        clickFirstBranchStoreTwo.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickFirstBranchStoreTwo);
     }
 
     public void clickButtonOKPopupFavoriteStore() {
-        clickButtonOKPopupFavoriteStore.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickButtonOKPopupFavoriteStore);
     }
 
     public void clickIconExpand() {
-        clickIconExpand.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconExpand);
     }
 
     public void clickDetailStore() {
-        clickDetailStore.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickDetailStore);
     }
 
     public void clickIconBackToHomePageShop() {
-        clickIconBackToHomePageShop.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconBackToHomePageShop);
     }
 
     public void clickSearchBar() {
-        clickSearchBar.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickSearchBar);
     }
 
     public void clickSearchBarBeforeTypeText() {
-        clickSearchBarBeforeTypeText.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickSearchBarBeforeTypeText);
     }
 
     public void clickIconBackToHomePageCategoryShop() {
-        clickIconBackToHomePageCategoryShop.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconBackToHomePageCategoryShop);
     }
 
     public void clickIconBackToListStore() {
-        clickIconBackToListStore.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconBackToListStore);
     }
 
 
@@ -155,7 +155,7 @@ public class StoreTwoPage extends BasePage {
 
         //Lăn xuống xem thông tin cửa hàng và chụp hình
         MobileUI.sleep(4);
-        MobileUI_Using_LogUtils_AllureReport.scroll(479,2319,498,1704,1000);
+        MobileUI_Using_LogUtils_AllureReport.scroll(503,2107,508,1352,1000);
 
         //Click icon Back To HomePage shop
         MobileUI.sleep(4);
@@ -224,6 +224,4 @@ public class StoreTwoPage extends BasePage {
             AllureManager.saveScreenshotPNG();
         }
     }
-
-
 }

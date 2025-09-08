@@ -108,20 +108,45 @@ public class MobileUI_Using_LogUtils_AllureReport {
         DriverManager.getDriver().executeScript("mobile: scrollGesture", scrollParams);
     }
 
-    //Scroll qua bên trái
-    public static void scrollLeft() {
+    //Scroll qua bên trái theo hard code
+    public static void scrollLeftHardCode() {
         sleep(STEP_ACTION_TIMEOUT);
         LogUtils.info("[MobileUI] Executing scrollLeft.");
         Dimension size = DriverManager.getDriver().manage().window().getSize();
-        int startX = (int) (size.width * 0.8);
+        int startX = (int) (size.width * 0.95); // gần cực phải
         //int startY = size.height / 2; // Ở chính giữa màn hình
-        int startY = (int) (size.height * 0.3); // 1/3 bên trên màn hình
-        int endX = (int) (size.width * 0.2);
+        int startY = (int) (size.height / 2); // giữa màn hình
+        int endX = (int) (size.width * 0.05); // gần cực trái
         int endY = startY; // Giữ nguyên độ cao
-        int duration = 200;
+        int duration = 400; // vuốt đủ chậm để scroll hết
 
         scroll(startX, startY, endX, endY, duration);
     }
+
+    //Scroll qua bên trái theo tọa độ
+    public static void scrollLeftToaDo() {
+        sleep(STEP_ACTION_TIMEOUT);
+        LogUtils.info("[MobileUI] Executing scrollLeftDynamic.");
+
+        // Lấy kích thước màn hình
+        Dimension size = DriverManager.getDriver().manage().window().getSize();
+
+        // Tỷ lệ dựa trên tọa độ mẫu
+        double startXRatio = 979.0 / size.width;
+        double startYRatio = 764.0 / size.height;
+        double endXRatio = 184.0 / size.width;
+        double endYRatio = 786.0 / size.height;
+
+        int startX = (int) (size.width * startXRatio);
+        int startY = (int) (size.height * startYRatio);
+        int endX = (int) (size.width * endXRatio);
+        int endY = (int) (size.height * endYRatio);
+
+        int duration = 400; // vuốt đủ chậm để scroll hết
+
+        scroll(startX, startY, endX, endY, duration);
+    }
+
 
     //Scroll qua bên phải
     public static void scrollRight() {

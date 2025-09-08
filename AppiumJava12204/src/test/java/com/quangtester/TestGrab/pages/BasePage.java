@@ -32,7 +32,7 @@ public class BasePage {
     public WebElement clickButtonSignIn;
 
     //Click icon "X" tắt popup Đăng nhập = cách khác
-    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Hủy\"]")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Thoát\"]")
     @iOSXCUITFindBy(accessibility = "clickIconCancelSignInWithOther")
     public WebElement clickIconCancelSignInWithOther;
 
@@ -42,7 +42,7 @@ public class BasePage {
     public WebElement clickButtonContinueWithPhoneNumber;
 
     //Click icon "X" tắt popup chọn 1 số điện thoại
-    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Hủy\"]")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Thoát\"]")
     @iOSXCUITFindBy(accessibility = "clickIconCancelChoosePhoneNumberOther")
     public WebElement clickIconCancelChoosePhoneNumberOther;
 
@@ -72,7 +72,7 @@ public class BasePage {
 
     //Click button Cho phép gửi thông báo
 //    com.android.permissioncontroller:id/permission_allow_foreground_only_button
-    @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_button")
+    @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_foreground_only_button")
     @iOSXCUITFindBy(accessibility = "clickButtonAcceptNotify")
     private WebElement clickButtonAcceptNotify;
 
@@ -130,68 +130,64 @@ public class BasePage {
 
     //Các hàm xử lý chung cho nhiều trang đều có
     public void clickPermission() {
-        clickPermission.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickPermission);
     }
 
     public void clickButtonSignIn() {
-        clickButtonSignIn.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickButtonSignIn);
     }
 
     public void clickIconCancelSignInWithOther() {
-        clickIconCancelSignInWithOther.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconCancelSignInWithOther);
     }
 
     public void clickButtonContinueWithPhoneNumber() {
-        clickButtonContinueWithPhoneNumber.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickButtonContinueWithPhoneNumber);
     }
 
     public void clickIconCancelChoosePhoneNumberOther() {
-        clickIconCancelChoosePhoneNumberOther.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconCancelChoosePhoneNumberOther);
     }
 
     public void clickIconBack() {
-        clickIconBack.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickIconBack);
     }
 
     public void clickButtonContinue() {
-        clickButtonContinue.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickButtonContinue);
     }
 
     public void clickButtonAcceptNotify() {
-        clickButtonAcceptNotify.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickButtonAcceptNotify);
     }
 
     public void clickButtonSkip() {
-        clickButtonSkip.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickButtonSkip);
     }
 
     //---------------------------------
 
     public void clickButtonAll() {
-        clickButtonAll.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickButtonAll);
     }
 
     public void clickMarket() {
-        clickMarket.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickMarket);
     }
 
     public void clickBarSearchDeliveryAddress() {
-        clickBarSearchDeliveryAddress.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickBarSearchDeliveryAddress);
     }
 
     public void clickBarSearchAddressDeliveryTo() {
-        clickBarSearchAddressDeliveryTo.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickBarSearchAddressDeliveryTo);
     }
 
     public void clickItemFirstAddress() {
-        clickItemFirstAddress.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickItemFirstAddress);
     }
 
     public void clickBeerMilk() {
-        clickBeerMilk.click();
+        MobileUI.clickElement_UseWebElement_NoSetTimeout(clickBeerMilk);
     }
-
-
-
-
 }

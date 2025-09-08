@@ -4,9 +4,9 @@
       "devices": {
         "tecnolt6": {
           "platformName": "Android",
-          "platformVersion": "14",
+          "platformVersion": "11",
           "automationName": "UiAutomator2",
-          "deviceName": "TECNO-LI6",
+          "deviceName": "SM-A305F",
           "appPackage": "com.grabtaxi.passenger",
           "appActivity": "com.grab.pax.newface.common.alias.DefaultLauncherAlias",
           "noReset": false,
